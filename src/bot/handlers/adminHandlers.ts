@@ -1,12 +1,12 @@
-﻿import { Composer } from 'grammy';
+﻿import { Composer, Context } from 'grammy';
 import { CONFIG } from '../../config';
 import { LogRepository } from '../../database/repositories/logRepository';
 import { PaymentRepository } from '../../database/repositories/paymentRepository';
 import { UserRepository } from '../../database/repositories/userRepository';
 import { TARIFF_PLANS } from '../../types';
 
-export function createAdminHandlers(): Composer {
-  const admin = new Composer();
+export function createAdminHandlers(): Composer<Context> {
+  const admin = new Composer<Context>();
   admin.use(async (ctx, next) => {
     if (!CONFIG.isAdmin(ctx.from?.id)) return;
     await next();
