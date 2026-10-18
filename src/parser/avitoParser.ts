@@ -8,6 +8,7 @@ export class AvitoParser {
         timeout: 10000
       });
       const items = res.data?.result?.items || [];
+      console.log('Avito: получено объявлений:', items.length);
       const list: RawCarListing[] = [];
       for (const it of items) {
         if (!it.value || !it.value.id) continue;
