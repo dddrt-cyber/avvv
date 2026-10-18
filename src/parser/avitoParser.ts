@@ -30,6 +30,10 @@ export class AvitoParser {
         });
       }
       return list;
-    } catch { return []; }
+    } catch (e: any) {
+  console.error('Avito error:', e?.response?.status, e?.message);
+  return [];
+}
+
   }
 }
